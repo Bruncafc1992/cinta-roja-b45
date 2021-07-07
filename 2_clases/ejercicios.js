@@ -51,10 +51,21 @@ class Cuenta{
     constructor(titular, cantidad){
         this.titular = titular;
         this.cantidad = cantidad;
+
+        
+    };
+
+    if(this.cantidad > 900){
+        console.log('Se alcanzo el limite de $900 MXN, permitidos por el banco');
+
+    } else {
+        
     };
 
     ingresar(ingreso){
         this.cantidad+=ingreso;
+        console.log('Saldo en cuenta:', this.cantidad);
+    
     };
 
     retirar(retiro){
@@ -66,17 +77,17 @@ let Cuenta1 = new Cuenta('Hiromi', 175);
 
 console.log(Cuenta1);
 
-Cuenta1.ingresar(300);
+Cuenta1.ingresar(800);
 
 console.log(Cuenta1);
 
-Cuenta1.retirar(476);
+/* Cuenta1.retirar(476);
 
 console.log(Cuenta1);
 
 let cuenta2 = new Cuenta('José', 100);
 
-console.log(cuenta2);
+console.log(cuenta2); */
 
 
 

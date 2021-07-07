@@ -4,15 +4,24 @@
 //     la información listada en cada columna en esa página de wikipedia
 //     (por ejemplo: character, origin...)
 
+ let myPenguin = {
+
+    character: 'Pingo',
+    origin: 'Rasmus Klump',
+    creator: 'Carla and Vilhelm Hansen'
+ };
 
 // 2.- Imprime el nombre del pingüino en consola, como si fuera un mensaje
 //     de bienvenida. La salida debe ser algo como:
 //     "Hola, soy un pingüino y mi nombre es [NOMBRE AQUÍ]"
 
+console.log('Hola, soy un pinguino y mi nombre es', myPenguin.character);
 
 // 3.- Escribe otra línea de código que añada una nueva propiedad a tu 
 //     pingüino llamada puedeVolar y asignalo a falso.
 //     Nota: No modifiques el código original donde definiste a tu pingüino
+
+myPenguin.puedeVolar = false;
 
 // 4.- Añade un método a tu pingüino llamado 'graznar' que muestre en 
 //     consola: "kaww kaww!!"
@@ -20,12 +29,20 @@
 //     Nota de la Nota: No modifiques el código previo. Hazlo en una
 //     nueva línea de código.
 
+myPenguin.graznar = function() {
+    
+    console.log ('kaww kaww');
+};
 
 // -----------------------------------------------------------------------
 // 5.- Añade otro método a tu pingüino llamado 'saludar' que imprima en
 //     consola el mismo mensaje que escribimos para la bienvenida.
 //     Esta vez, emplea la palabra reservada "this" para resolverlo.
 
+myPenguin.saludar = function (){
+
+    console.log('Hola, soy un pingüino y mi nombre es', this.character);
+};
 
 
 // -----------------------------------------------------------------------
@@ -34,7 +51,8 @@
 //     "Señor Pingu" y llama al método "saludar" para verificar que 
 //     se ha aplicado el cambio correctamente.
 
-
+myPenguin.character = 'Señor Pingu';
+myPenguin.saludar();
 
 // -----------------------------------------------------------------------
 // -----------------------------------------------------------------------
@@ -43,6 +61,20 @@
 //     en su atributo 'puedeVolar'. De lo contrario, muestra el mensaje
 //     "No puedo volar :("
 
+console.log(myPenguin);
+
+myPenguin.volar = function (){
+
+    if (this.puedeVolar === true){
+
+        console.log('¡Puede volar!');
+    } 
+    else {
+
+        console.log('No puede volar');
+    }
+
+};
 
 // -----------------------------------------------------------------------
 // -----------------------------------------------------------------------
@@ -50,7 +82,8 @@
 //     llamar el método 'volar' para verificar que el cambio se efectuó
 //     correctamente.
 
-
+myPenguin.puedeVolar = true;
+myPenguin.volar();
 
 
 // -----------------------------------------------------------------------
@@ -68,6 +101,20 @@
 //     comino
 //     cocoa
 
+let prepararMole = {
+
+    titulo: 'Mole verde',
+    porciones: 2,
+    ingredientes: ['canela', 'comino', 'cocoa']
+
+}
+
+/* console.log(prepararMole.titulo);
+console.log('Porciones: ' , prepararMole.porciones);
+console.log('Ingredientes:');
+for(let i=0; i<=2; i++){
+    console.log(prepararMole.ingredientes[i]);
+}; */
 
 
 // -------------------------------------------------------------
@@ -79,3 +126,34 @@
 //     cada libro imprime el titulo y autor, junto con su 
 //     status de lectura (si ya ha sido leído, o no).
 // -------------------------------------------------------------
+
+let arregloLibros = [
+
+    libro1 = {
+
+        titulo: 'Padre Rico Padre Pobre',
+        autor: 'Robert Kiyosaki',
+        leido: true
+    },
+
+    libro2 = {
+
+        titulo: 'El camino del lobo',
+        autor: 'Jordan Belfort',
+        leido: false
+    },
+
+    libro3 = {
+
+        titulo: 'El peregrino' ,
+        autor: 'Paulo Coelho',
+        leido: false
+    },
+];
+
+
+    arregloLibros.forEach((i) => {
+        console.log(i);
+    });
+
+ 
