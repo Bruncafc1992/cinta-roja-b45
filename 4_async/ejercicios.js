@@ -45,9 +45,9 @@ let multi = (num1, num2) => {
     console.log("Resultado de la multiplicación:", num1 * num2);
 };
 
-op2(3, 4, sumar);
-op2(3, 4, restar);
-op2(3, 4, multi);
+// op2(3, 4, sumar);
+// op2(3, 4, restar);
+// op2(3, 4, multi);
 
 
 // 3.- Escribe una función de orden superior que reciba una cadena de
@@ -57,3 +57,23 @@ op2(3, 4, multi);
 //             -> pejelagarto
 //             ordenSuperior("PejeLagarto", mayus);
 //             -> PEJELARTO
+
+let minMay = (variable, callback)=>{
+    
+    callback(variable);
+
+};
+
+let minus = (variable)=>{
+
+    console.log(variable.toLowerCase());
+}
+
+minMay('CArrTTsdFSFSSSES',minus);
+
+let mayus = (variable)=>{
+
+    console.log(variable.toUpperCase());
+}
+
+minMay('CArrTTsdFSFSSSES',mayus);
