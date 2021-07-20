@@ -15,7 +15,7 @@
 //     de bienvenida. La salida debe ser algo como:
 //     "Hola, soy un pingüino y mi nombre es [NOMBRE AQUÍ]"
 
-console.log('Hola, soy un pinguino y mi nombre es', myPenguin.character);
+// console.log('Hola, soy un pinguino y mi nombre es', myPenguin.character);
 
 // 3.- Escribe otra línea de código que añada una nueva propiedad a tu 
 //     pingüino llamada puedeVolar y asignalo a falso.
@@ -51,8 +51,8 @@ myPenguin.saludar = function (){
 //     "Señor Pingu" y llama al método "saludar" para verificar que 
 //     se ha aplicado el cambio correctamente.
 
-myPenguin.character = 'Señor Pingu';
-myPenguin.saludar();
+// myPenguin.character = 'Señor Pingu';
+// myPenguin.saludar();
 
 // -----------------------------------------------------------------------
 // -----------------------------------------------------------------------
@@ -61,7 +61,7 @@ myPenguin.saludar();
 //     en su atributo 'puedeVolar'. De lo contrario, muestra el mensaje
 //     "No puedo volar :("
 
-console.log(myPenguin);
+// console.log(myPenguin);
 
 myPenguin.volar = function (){
 
@@ -82,8 +82,8 @@ myPenguin.volar = function (){
 //     llamar el método 'volar' para verificar que el cambio se efectuó
 //     correctamente.
 
-myPenguin.puedeVolar = true;
-myPenguin.volar();
+// myPenguin.puedeVolar = true;
+// myPenguin.volar();
 
 
 // -----------------------------------------------------------------------
@@ -152,8 +152,22 @@ let arregloLibros = [
 ];
 
 
-    arregloLibros.forEach((i) => {
-        console.log(i);
-    });
+    // arregloLibros.forEach((i) => {
+    //     console.log(i);
+    // });
 
- 
+
+    //15- Escribe una función que mande todos los números naturales de 1 a n
+
+    let naturales = function(x){
+
+        for(let i=1; i<=x; i++){
+
+         if(i<x) {console.log(i)}
+        }
+
+        return x;
+
+    };
+
+    console.log(naturales(15));
