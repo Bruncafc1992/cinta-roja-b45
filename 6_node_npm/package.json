@@ -12,5 +12,10 @@
     "js"
   ],
   "author": "joseabjerez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
+    "request": "^2.88.2"
+  }
 }
