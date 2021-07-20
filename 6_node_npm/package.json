@@ -1,0 +1,16 @@
+{
+  "name": "6_node_npm",
+  "version": "1.0.0",
+  "description": "Este es un proyecto de test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "js"
+  ],
+  "author": "joseabjerez",
+  "license": "ISC"
+}
