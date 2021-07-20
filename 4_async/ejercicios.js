@@ -69,11 +69,37 @@ let minus = (variable)=>{
     console.log(variable.toLowerCase());
 }
 
-minMay('CArrTTsdFSFSSSES',minus);
+// minMay('CArrTTsdFSFSSSES',minus);
 
 let mayus = (variable)=>{
 
     console.log(variable.toUpperCase());
 }
 
-minMay('CArrTTsdFSFSSSES',mayus);
+// minMay('CArrTTsdFSFSSSES',mayus);
+
+
+// 4.- Hacer un arreglo de 4 cantidades de tiempo (en minutos)
+//     EJEMPLO c y tomar solo las cantidades
+//     mayores a dos horas (hacer la comparación en horas) 
+//     mediante un callback.
+
+
+
+
+let arreglo = [120,160,130,90];
+
+let resumen = arreglo.filter((x)=>{
+
+    return x > 120;
+
+});
+
+console.log(resumen);
+
+
+
+
+
+
+
