@@ -40,7 +40,7 @@ let obtenerPersonajes = ( ) => {
             
             // console.log(nombres);
             
-            let infoAltura = resultados.map((personaje )=> {
+            let infoAltura = resultados.map(personaje =>{
                 
                 return {Nombre: personaje.name, Altura: personaje.height };
                 
@@ -48,11 +48,7 @@ let obtenerPersonajes = ( ) => {
             
             console.log(infoAltura);
             
-            let losMasAltos = infoAltura.filter((x)=>{
-                return x.Altura >= 160;
-                
-            })
-            
+            let losMasAltos = infoAltura.filter(x => {return x.Altura <= 160;})
             
             console.log(losMasAltos);
         } else {
