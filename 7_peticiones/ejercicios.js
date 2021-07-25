@@ -119,7 +119,7 @@ let generoMusica = (id) => {
     })
 }
 
-generoMusica("ub40");
+// generoMusica("ub40");
 
 
 // 5.- Hacer una petición a la swapi a un personaje y obtener 
@@ -127,6 +127,28 @@ generoMusica("ub40");
 //
 //                     https://swapi.co/
 
+let peliculaPersonaje = (id) => {
+
+    const URL_BASE = 'https://swapi.dev/api/people/';
+
+    request(`${URL_BASE}${id}`, (error, respuesta, body) => {
+
+        let personajeInfo = JSON.parse(body);
+
+        request(personajeInfo.films[0], (error, respuesta, body) =>{
+
+        let peliculas = JSON.parse(body);
+
+        console.log("La primer película de", personajeInfo.name, "es:", peliculas.title);
+
+           
+        }
+
+        );
+})
+}
+
+// peliculaPersonaje(25);
 
 // 6.- Hacer una petición a la swapi a un personaje y obtener 
 //     sus primera películas
@@ -134,20 +156,112 @@ generoMusica("ub40");
 //                     https://swapi.co/
 
 
+let primerasPeliculasPersonajes = (id) => {
+
+    const URL_BASE = 'https://swapi.dev/api/people/';
+
+    request(`${URL_BASE}${id}`, (error, respuesta, body) => {
+
+        let personajeInfo = JSON.parse(body);
+
+        let peliculas = personajeInfo.films.map((x, y) => {
+            
+            request(x, (error, respuesta, body) =>{
+
+                let nombresPeliculas = JSON.parse(body);
+        
+                console.log(personajeInfo.name,y+1, 'Película: ',nombresPeliculas.title);
+            
+            });  
+        }
+
+        );
+})
+}
+
+// primerasPeliculasPersonajes(1);
+
 // 7.- Hacer una petición a la swapi a una película y obtener 
 //     sus personajes
 //
 //                     https://swapi.co/
+
+
+let traerPersonajesPelicula = (idPelicula) =>{
+
+    const URL_BASE = 'https://swapi.dev/api/films/';
+
+    request(`${URL_BASE}${idPelicula}`, (error, respuesta, body) =>{
+
+        if (respuesta.statusCode === 200){ 
+
+        let personajes = JSON.parse(body);
+
+        let listaPersonajes = personajes.characters.map((x, y)=>{
+
+            request(x, (error, respuesta, body)=>{
+
+                let nombresPersonaje= JSON.parse(body);
+
+                console.log(nombresPersonaje.name);
+            })
+        })
+
+    } else {
+
+        console.log('Error, status code:', respuesta.statusCode);
+
+    }
+    
+    })
+}
+
+// traerPersonajesPelicula(6);
 
 // 8.- Hacer una petición a la swapi a un planeta y obtener 
 //     los nombres de los habitantes
 //
 //                     http://swapi.dev/api/planets/1/
 
+let traerNombresPlaneta = (idPlaneta) =>{
+
+    const URL_BASE ='http://swapi.dev/api/planets/';
+
+    request(`${URL_BASE}${idPlaneta}`, (error, respuesta, body) => {
+
+        if(respuesta.statusCode === 200){
+
+            let infoPlaneta = JSON.parse(body);
+
+            console.log('Nombre del planeta:',infoPlaneta.name);
+
+            let nombresResidentes = infoPlaneta.residents.map((x, y)=> {
+
+                request(x, (error, respuesta, body) => {
+
+                    let resultados = JSON.parse(body);
+
+                    console.log(y,resultados.name);
+                })
+            })
+
+
+        } else {
+
+            console.log('Error, status code:', respuesta.statusCode);
+        }
+    })
+
+}
+
+traerNombresPlaneta(1);
+
 // 9.- Hacer una petición a la pokeapi a un pokemon y obtener 
 //     sus habilidades
 //
 //                     https://pokeapi.co/api/v2/pokemon/1
+
+
 
 // 10.- Hacer una petición a la pokeapi a un pokemon y obtener 
 //     el área en donde lo encuentras
@@ -164,4 +278,3 @@ generoMusica("ub40");
 //     devolver un arreglo de objetos con el nombre, sus moves, tipos, tamaño 
 //     y peso.
 //                       https://pokeapi.co/
-
