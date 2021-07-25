@@ -254,12 +254,40 @@ let traerNombresPlaneta = (idPlaneta) =>{
 
 }
 
-traerNombresPlaneta(1);
+// traerNombresPlaneta(1);
 
 // 9.- Hacer una petición a la pokeapi a un pokemon y obtener 
 //     sus habilidades
 //
 //                     https://pokeapi.co/api/v2/pokemon/1
+
+let habilidadesPokemon = (idPokemon) =>{
+
+    const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
+
+    request(`${URL_BASE}${idPokemon}`, (error, respuesta, body) =>{
+
+        if(respuesta.statusCode === 200){
+
+            let infoPokemon = JSON.parse(body);
+
+            let habilidades = infoPokemon.abilities.map(x=>{
+
+               return x.ability.name;
+            })
+
+            console.log(infoPokemon.forms[0].name, habilidades);
+
+        } else {
+
+            console.log('Error, status code: ', respuesta.statusCode);
+        }
+
+    })
+
+}
+
+// habilidadesPokemon('pikachu');
 
 
 
@@ -268,6 +296,41 @@ traerNombresPlaneta(1);
 //
 //                     https://pokeapi.co/api/v2/pokemon/1
 
+let obtenerAreaPokemon = (idPokemon) => {
+
+    const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
+
+    request(`${URL_BASE}${idPokemon}`, (error, respuesta, body) => { 
+
+        if (respuesta.statusCode === 200){
+            
+            let infoPokemon = JSON.parse(body);
+
+            request(infoPokemon.location_area_encounters, (error, respuesta, body) =>{
+
+                let resultados2 = JSON.parse(body);
+
+                let nombresAreas = resultados2.map(x => {
+
+                return x.location_area.name;
+
+                });
+
+                console.log(nombresAreas);
+
+
+            })
+
+            
+        } else {
+
+            console.log('Error, status code', respuesta.statusCode);
+        }
+
+    })
+}
+
+obtenerAreaPokemon('pikachu');
 
 // 11.- Devolver los asteroides que sean potencialmente peligrosos
 //     para la tierra de la semana pasada hasta el día de ayer.
