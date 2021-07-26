@@ -170,7 +170,7 @@ let primerasPeliculasPersonajes = (id) => {
 
                 let nombresPeliculas = JSON.parse(body);
         
-                console.log(personajeInfo.name,y+1, 'Película: ',nombresPeliculas.title);
+                console.log(personajeInfo.name, y+1, 'Película:',nombresPeliculas.title);
             
             });  
         }
@@ -308,20 +308,17 @@ let obtenerAreaPokemon = (idPokemon) => {
 
             request(infoPokemon.location_area_encounters, (error, respuesta, body) =>{
 
-                let resultados2 = JSON.parse(body);
+                let resultados = JSON.parse(body);
 
-                let nombresAreas = resultados2.map(x => {
+                let nombresAreas = resultados.map((x,y) => {
 
-                return x.location_area.name;
+                return {Nombre_Pokemon: idPokemon, Lugar: x.location_area.name};
 
                 });
 
                 console.log(nombresAreas);
 
-
-            })
-
-            
+            })     
         } else {
 
             console.log('Error, status code', respuesta.statusCode);
@@ -330,12 +327,41 @@ let obtenerAreaPokemon = (idPokemon) => {
     })
 }
 
-obtenerAreaPokemon('pikachu');
+// obtenerAreaPokemon('pikachu');
 
 // 11.- Devolver los asteroides que sean potencialmente peligrosos
 //     para la tierra de la semana pasada hasta el día de ayer.
 //                     https://api.nasa.gov/
 
+let asteroidesPeligrososUltimaSemana = () => {
+
+    const URL_BASE = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-07-26&api_key=v2cDGq2EnJir9FBrPWgcOZcwU50cWHwAnTq0Y943';
+
+    request(URL_BASE, (error, respuesta, body) => {
+
+        let resultados = JSON.parse(body);
+        
+        // for (let i = 0; i<= resultados.near_earth_objects[]; i++) {
+
+            let asteroidesPeligrosos = resultados.near_earth_objects['2021-07-26'];
+            
+            let peligrosos = asteroidesPeligrosos.map(x => {
+                
+                if (x.is_potentially_hazardous_asteroid = true) {
+                    
+                    console.log(`Asteroide peligroso: ${x.name} y su fecha exacta de acercamiento: ${x.close_approach_data[0].close_approach_date_full}`);
+                    
+                } else {
+                    console.log('No hay asteroides peligrosos...');
+                }
+            })
+            // console.log(`Nombre de asteroide: ${asteroidesPeligrosos.name}, es peligroso: ${asteroidesPeligrosos.is_potentially_hazardous_asteroid}`);
+        // }
+
+})
+}
+
+asteroidesPeligrososUltimaSemana();
 
 // 12.- Traer los primeros 151 pokemon de la primera generacion y 
 //     devolver un arreglo de objetos con el nombre, sus moves, tipos, tamaño 
