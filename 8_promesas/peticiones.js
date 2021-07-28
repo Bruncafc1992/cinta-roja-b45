@@ -16,7 +16,7 @@ const request = require('request');
 //     })
 // };
 
-// obtenerPersonaje(1)
+// obtenerPersonaje(3)
 //     .then(personaje => console.log(personaje.hair_color))
 //     .catch(error => console.log(error));
 
@@ -37,24 +37,24 @@ const request = require('request');
 
 
 
-let obtenerPersonajes = () => {
-    const URL = 'https://swapi.dev/api/people/';
+// let obtenerPersonajes = () => {
+//     const URL = 'https://swapi.dev/api/people/';
 
-    return new Promise( (resolve, reject) => {
+//     return new Promise( (resolve, reject) => {
 
-        request(URL, (error, respuesta, body) => {
-            respuesta.statusCode === 200 
-            ? resolve(body) 
-            : reject(':C');
+//         request(URL, (error, respuesta, body) => {
+//             respuesta.statusCode === 200 
+//             ? resolve(body) 
+//             : reject(':C');
 
-            // if (respuesta.statusCode === 200) {
-            //     resolve(body) 
-            // } else {
-            //     reject('ERROR')
-            // };
-        })
-    } )
-}
+//             // if (respuesta.statusCode === 200) {
+//             //     resolve(body) 
+//             // } else {
+//             //     reject('ERROR')
+//             // };
+//         })
+//     } )
+// }
 
 // obtenerPersonajes()
 //     .then(body => {
@@ -84,7 +84,7 @@ let obtenerPersonajes = () => {
     };
 
 
-    obtenerPersonaje(10).then(body => {
+    obtenerPersonaje(1).then(body => {
         let infoPersonaje = JSON.parse(body);
         console.log(infoPersonaje.name);
         let endpoints = infoPersonaje.films;
